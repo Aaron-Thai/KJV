@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>KJV Bible</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+</head>
+
+<body>
+
+<input id="target" type="text" style="width:450px;" value="John1">
+
+<h2 id="myTarget"></h2>
+<p id="myText"></p>
+ 
+<script>
+
+    var inputvalue
+    
+    $( "input" )
+            .on( "keyup", function() {
+                inputvalue = $( this ).val();
+                $( "h2" ).text( inputvalue );
+
+                fetch("https://bible-api.com/" + inputvalue + "?translation=kjv")
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById('myText').innerHTML = data.text
+                        // console.log(data);
+                        // document.getElementById('myTarget').innerHTML = value
+                    })
+            } )
+            .trigger( "keyup" );
+</script>
+ 
+</body>
+
+</html>
+
+<!-- 
+    tutorial: http://api.jquery.com/jQuery.getJSON/
+    video tutorial: https://www.youtube.com/watch?v=Oage6H4GX2o
+    bible api: https://bible-api.com/
+-->
