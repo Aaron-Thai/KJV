@@ -5,18 +5,46 @@
   <meta charset="utf-8">
   <title>KJV Bible</title>
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <style>
+    .container {
+        display: flex;
+        flex-direction: row;
+        height: 7vh;
+    }   
+
+    input, button {
+        flex-grow: 1;
+        font-family: 'Garamond', 'Times New Roman', serif;
+        font-size: 100%;
+        font-weight: bold;
+    }
+
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    .dark-mode {
+        background-color: black;
+        color: white;
+    }
+  </style>
 </head>
 
 <body>
 
-<input id="target" type="text" style="width:200px;" value="John1">
-<button>Now reading:</button>
+    <div class="container">
+        <input id="target" type="text" value="John1">
+        <button id="themetoggle">Theme</button>
+        <button id="nowreading">Now reading:</button>
+    </div>
 
-<h2 id="myTarget"></h2>
-<p id="myText"></p>
+    <div>
+        <h2 id="myTarget"></h2>
+        <p id="myText"></p>
+    </div>
  
 <script>
-
     var inputvalue
     
     $( "input" )
@@ -28,7 +56,7 @@
             })
             .trigger( "keyup" );
 
-    $( "button" )
+    $( "#nowreading" )
             .on("click", function() {
                 fetch("https://bible-api.com/" + inputvalue + "?translation=kjv")
                     .then(res => res.json())
@@ -37,6 +65,12 @@
                         // console.log(data);
                         // document.getElementById('myTarget').innerHTML = value
                     })
+            })
+
+    $( "#themetoggle" )
+            .on("click", function() {
+                var element = document.body;
+                element.classList.toggle("dark-mode");
             })
 </script>
  
@@ -48,4 +82,7 @@
     tutorial: http://api.jquery.com/jQuery.getJSON/
     video tutorial: https://www.youtube.com/watch?v=Oage6H4GX2o
     bible api: https://bible-api.com/
+    dark mode: https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp
+    flexbox: https://codeburst.io/how-to-position-html-elements-side-by-side-with-css-e1fae72ddcc
+    dynamic sizing: https://stackoverflow.com/questions/70498488/how-to-resize-container-height-based-on-browser-width
 -->
