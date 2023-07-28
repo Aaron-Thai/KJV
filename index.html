@@ -9,7 +9,8 @@
 
 <body>
 
-<input id="target" type="text" style="width:450px;" value="John1">
+<input id="target" type="text" style="width:200px;" value="John1">
+<button>Now reading:</button>
 
 <h2 id="myTarget"></h2>
 <p id="myText"></p>
@@ -23,6 +24,12 @@
                 inputvalue = $( this ).val();
                 $( "h2" ).text( inputvalue );
 
+                
+            })
+            .trigger( "keyup" );
+
+    $( "button" )
+            .on("click", function() {
                 fetch("https://bible-api.com/" + inputvalue + "?translation=kjv")
                     .then(res => res.json())
                     .then(data => {
@@ -30,8 +37,7 @@
                         // console.log(data);
                         // document.getElementById('myTarget').innerHTML = value
                     })
-            } )
-            .trigger( "keyup" );
+            })
 </script>
  
 </body>
