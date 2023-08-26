@@ -10,12 +10,12 @@ Now with Light and Dark theme.
 
 <b> Supported Read Aloud Translations: </b> 
 * KJV (King James Version)
-* WEB (World English Bible)
+* WEBBE (World English Bible, British Edition)
 * Almeida (João Ferreira de Almeida, Portuguese)
 * RCCV (Protestant Romanian Corrected Cornilescu Version)
 
 <b> Other Translations: </b>
-* WEBBE (World English Bible, British Edition)
+* WEB (World English Bible)
 * BBE (Bible in Basic English)
 * Clementine (Clementine Latin Vulgate)
 
