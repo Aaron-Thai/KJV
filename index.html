@@ -3,54 +3,42 @@
 
 <head>
   <meta charset="utf-8">
-  <title>KJV Bible</title>
+  <title>Simple Bible</title>
+  <link rel="stylesheet" href="style.css" />
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-  <style>
-    .container {
-        display: flex;
-        flex-direction: row;
-        height: 7vh;
-    }   
-
-    input, button {
-        flex-grow: 1;
-        font-family: 'Garamond', 'Times New Roman', serif;
-        font-size: 100%;
-        font-weight: bold;
-    }
-
-    body {
-        background-color: white;
-        color: black;
-    }
-
-    .dark-mode {
-        background-color: black;
-        color: white;
-    }
-  </style>
 </head>
 
 <body>
 
     <div class="container">
-        <input id="target" type="text" value="John1">
+        <input id="target" type="text" value="John1" placeholder="Book+Chapter">
+        <input id="translation" type="text" value="kjv" placeholder="Translation (KJV or WEB)">
         <button id="themetoggle">Theme</button>
         <button id="nowreading">Now reading:</button>
     </div>
 
     <div>
-        <h2 id="myTarget"></h2>
+        <h2 id="myTarget"></h2> <!-- <h2 id="myTranslation"></h2> -->
         <p id="myText"></p>
     </div>
  
 <script>
     var inputvalue
+    var translationvalue
     
-    $( "input" )
+    $( "#target" )
             .on( "keyup", function() {
                 inputvalue = $( this ).val();
-                $( "h2" ).text( inputvalue );
+                $( "#myTarget" ).text( inputvalue );
+
+                
+            })
+            .trigger( "keyup" );
+
+    $( "#translation" )
+            .on( "keyup", function() {
+                translationvalue = $( this ).val();
+                $( "#myTranslation" ).text( translationvalue );
 
                 
             })
@@ -58,7 +46,7 @@
 
     $( "#nowreading" )
             .on("click", function() {
-                fetch("https://bible-api.com/" + inputvalue + "?translation=kjv")
+                fetch("https://bible-api.com/" + inputvalue + "?translation=" + translationvalue)
                     .then(res => res.json())
                     .then(data => {
                         document.getElementById('myText').innerHTML = data.text

@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 7vh;
+}   
+
+input, button {
+    flex-grow: 1;
+    font-family: 'Garamond', 'Times New Roman', serif;
+    font-size: 100%;
+    font-weight: bold;
+}
+
+h2 {
+    display:inline-block
+}
+
+body {
+    background-color: white;
+    color: black;
+}
+
+.dark-mode {
+    background-color: black;
+    color: white;
+}
